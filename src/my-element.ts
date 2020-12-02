@@ -12,14 +12,16 @@
  * http://polymer.github.io/PATENTS.txt
  */
 
-import {LitElement, html, customElement, property, css} from 'lit-element';
-
+import { LitElement, html, customElement, property, css } from 'lit-element';
+import load from './maploader'
+const defaultApiKey = 'AIzaSyAgV7gRtp8kIpEb17-ukuHMw7lte494nw8'
 /**
  * An example element.
  *
  * @slot - This element has a slot
  * @csspart button - The button
  */
+
 @customElement('my-element')
 export class MyElement extends LitElement {
   static styles = css`
@@ -28,6 +30,10 @@ export class MyElement extends LitElement {
       border: solid 1px gray;
       padding: 16px;
       max-width: 800px;
+    }
+
+    #mapid {
+      height: 400px;
     }
   `;
 
@@ -40,17 +46,46 @@ export class MyElement extends LitElement {
   /**
    * The number of times the button has been clicked.
    */
-  @property({type: Number})
+  @property({ type: Number })
   count = 0;
+
+  @property({ type: String })
+  apikey = '';
+
 
   render() {
     return html`
       <h1>Hello, ${this.name}!</h1>
       <button @click=${this._onClick} part="button">
-        Click Count: ${this.count}
+        Click XCount: ${this.count}
       </button>
       <slot></slot>
+      <div id="mapid"></div>
     `;
+  }
+
+  protected firstUpdated() {
+    if (this.apikey === '') {
+      this.apikey = defaultApiKey
+    }
+    this.addEventListener('MapsLoaded', e => this.initMap(e))
+    load(this.apikey, this)
+  }
+
+  initMap(e: Event): boolean {
+    console.log('Loaded:', e)
+    const mid = this.renderRoot.querySelector('#mapid')
+    if (mid) {
+      const map = new google.maps.Map(
+        mid,
+        {
+          center: { lat: -34.397, lng: 150.644 },
+          zoom: 8,
+        }
+      );
+    }
+
+    return true
   }
 
   private _onClick() {
@@ -67,3 +102,5 @@ declare global {
     'my-element': MyElement;
   }
 }
+
+

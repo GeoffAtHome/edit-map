@@ -6,6 +6,7 @@
   "module": "my-element.js",
   "type": "module",
   "scripts": {
+    "start": "concurrently --kill-others --names tsc,es-dev-server \"tsc --watch\" \"es-dev-server --node-resolve --watch\"",
     "build": "tsc",
     "build:watch": "tsc --watch",
     "clean": "rimraf my-element.{d.ts,d.ts.map,js,js.map} test/my-element.{d.ts,d.ts.map,js,js.map} test/my-element_test.{d.ts,d.ts.map,js,js.map}",
@@ -36,7 +37,9 @@
   "author": "The Polymer Authors",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "lit-element": "^2.3.1"
+    "@polymer/iron-jsonp-library": "^3.0.1",
+    "lit-element": "^2.3.1",
+    "load-script": "^1.0.0"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.10.0",
@@ -45,10 +48,12 @@
     "@open-wc/testing-karma": "^3.3.11",
     "@rollup/plugin-replace": "^2.3.1",
     "@types/chai": "^4.2.11",
+    "@types/googlemaps": "^3.40.3",
     "@types/mocha": "^7.0.2",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
     "chai": "^4.2.0",
+    "concurrently": "^5.3.0",
     "deepmerge": "^4.2.2",
     "es-dev-server": "^1.46.1",
     "eslint": "^6.8.0",
