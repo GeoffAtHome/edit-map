@@ -14,7 +14,6 @@
 
 import { LitElement, html, customElement, property, css } from 'lit-element';
 import load from './maploader'
-const defaultApiKey = 'AIzaSyAgV7gRtp8kIpEb17-ukuHMw7lte494nw8'
 /**
  * An example element.
  *
@@ -49,9 +48,21 @@ export class EditMap extends LitElement {
   @property({ type: Number })
   count = 0;
 
+  /**
+   * The Google Maps API key
+   */
   @property({ type: String })
   apikey = '';
 
+
+  /**
+   * The Google Maps API key
+   */
+  @property({ type: Object })
+  options = {};
+
+
+  map: object = {}
 
   render() {
     return html`
@@ -65,9 +76,6 @@ export class EditMap extends LitElement {
   }
 
   protected firstUpdated() {
-    if (this.apikey === '') {
-      this.apikey = defaultApiKey
-    }
     this.addEventListener('MapsLoaded', e => this.initMap(e))
     load(this.apikey, this)
   }
@@ -76,15 +84,9 @@ export class EditMap extends LitElement {
     console.log('Loaded:', e)
     const mid = this.renderRoot.querySelector('#mapid')
     if (mid) {
-      const map = new google.maps.Map(
-        mid,
-        {
-          center: { lat: -34.397, lng: 150.644 },
-          zoom: 8,
-        }
+      this.map = new google.maps.Map(
+        mid, this.options
       );
-
-      map.addListener('hello', this._onClick)
     }
 
     return true
