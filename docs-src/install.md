@@ -1,16 +1,16 @@
 ---
 layout: page.11ty.cjs
-title: <my-element> ⌲ Install
+title: <edit-map> ⌲ Install
 ---
 
 # Install
 
-`<my-element>` is distributed on npm, so you can install it locally or use it via npm CDNs like unpkg.com.
+`<edit-map>` is distributed on npm, so you can install it locally or use it via npm CDNs like unpkg.com.
 
 ## Local Installation
 
 ```bash
-npm i my-element
+npm i edit-map
 ```
 
 ## CDN
@@ -21,10 +21,10 @@ For this element to work from unpkg.com specifically, you need to include the `?
 
 ### HTML
 ```html
-<script type="module" src="https://unpkg.com/my-element?module"></script>
+<script type="module" src="https://unpkg.com/edit-map?module"></script>
 ```
 
 ### JavaScript
 ```html
-import {MyElement} from 'https://unpkg.com/my-element?module';
+import {EditMap} from 'https://unpkg.com/edit-map?module';
 ```

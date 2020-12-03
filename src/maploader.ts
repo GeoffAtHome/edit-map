@@ -27,7 +27,6 @@
  * ```
  */
 
-import { elementUpdated } from "@open-wc/testing"
 
 let googleMapsApiLoaded = false
 

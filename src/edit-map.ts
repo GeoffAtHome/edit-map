@@ -22,8 +22,8 @@ const defaultApiKey = 'AIzaSyAgV7gRtp8kIpEb17-ukuHMw7lte494nw8'
  * @csspart button - The button
  */
 
-@customElement('my-element')
-export class MyElement extends LitElement {
+@customElement('edit-map')
+export class EditMap extends LitElement {
   static styles = css`
     :host {
       display: block;
@@ -83,6 +83,8 @@ export class MyElement extends LitElement {
           zoom: 8,
         }
       );
+
+      map.addListener('hello', this._onClick)
     }
 
     return true
@@ -99,7 +101,7 @@ export class MyElement extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'my-element': MyElement;
+    'edit-map': EditMap;
   }
 }
 

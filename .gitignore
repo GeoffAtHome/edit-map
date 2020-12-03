@@ -3,10 +3,10 @@
 /test/
 
 # top level source
-my-element.js
-my-element.js.map
-my-element.d.ts
-my-element.d.ts.map
+edit-map.js
+edit-map.js.map
+edit-map.d.ts
+edit-map.d.ts.map
 maploader.d.ts.map
 maploader.d.ts
 maploader.js
