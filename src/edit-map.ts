@@ -14,13 +14,15 @@
 
 import { LitElement, html, customElement, property, css } from 'lit-element';
 import load from './maploader'
+
+
+let map: google.maps.Map;
 /**
- * An example element.
+ * Interface onto the Google Maps API
  *
- * @slot - This element has a slot
+ * @apikey - This element has a slot
  * @csspart button - The button
  */
-
 @customElement('edit-map')
 export class EditMap extends LitElement {
   static styles = css`
@@ -37,40 +39,31 @@ export class EditMap extends LitElement {
   `;
 
   /**
-   * The name to say "Hello" to.
-   */
-  @property()
-  name = 'World';
-
-  /**
-   * The number of times the button has been clicked.
-   */
-  @property({ type: Number })
-  count = 0;
-
-  /**
    * The Google Maps API key
    */
   @property({ type: String })
   apikey = '';
 
-
   /**
-   * The Google Maps API key
+   * The Google map options
    */
   @property({ type: Object })
   options = {};
 
+  /**
+   * The polygons to draw.
+   * Each polygon has a key, path and options
+   */
+  @property({ type: Object })
+  polygonData: PolygonData | undefined
 
-  map: object = {}
+  /**
+   * The polygons that have been drawn on the map so that these can be modified.
+   */
+  polygonsOnMap: PolygonsOnMap = {}
 
   render() {
     return html`
-      <h1>Hello, ${this.name}!</h1>
-      <button @click=${this._onClick} part="button">
-        Click XCount: ${this.count}
-      </button>
-      <slot></slot>
       <div id="mapid"></div>
     `;
   }
@@ -84,27 +77,57 @@ export class EditMap extends LitElement {
     console.log('Loaded:', e)
     const mid = this.renderRoot.querySelector('#mapid')
     if (mid) {
-      this.map = new google.maps.Map(
+      map = new google.maps.Map(
         mid, this.options
       );
     }
+    if (this.polygonData) {
+      for (const [postcode, item] of Object.entries(this.polygonData)) {
+        const options = item.options
+        options.paths = getPath(item.paths)
+        const newPolygon = new google.maps.Polygon(options)
+        this.polygonsOnMap[postcode] = newPolygon
+
+        google.maps.event.addListener(newPolygon, "dblclick", function (event) {
+          if (event.vertex !== undefined) {
+            const path = newPolygon.getPath();
+            path.removeAt(event.vertex);
+          }
+        });
+        newPolygon.setMap(map);
+      }
+    }
+
 
     return true
   }
-
-  private _onClick() {
-    this.count++;
-  }
-
-  foo(): string {
-    return 'foo';
-  }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     'edit-map': EditMap;
   }
 }
 
+interface Polygon {
+  coordinates: Array<Array<[number, number]>>;
+  type: string;
+}
+
+export interface PolygonDataItem {
+  paths: Polygon;
+  options: google.maps.PolygonOptions;
+}
+
+interface PolygonData {
+  [index: string]: PolygonDataItem;
+}
+
+interface PolygonsOnMap {
+  [index: string]: google.maps.Polygon;
+}
+
+
+function getPath(polygon: Polygon) {
+  return polygon.coordinates[0].map(pair => { return { lat: pair[1], lng: pair[0] } })
+}
 

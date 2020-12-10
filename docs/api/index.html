@@ -31,7 +31,7 @@
       
         <h2>&lt;edit-map></h2>
         <div>
-          An example element.
+          Interface onto the Google Maps API
         </div>
         
     <h3>Attributes</h3>
@@ -41,11 +41,16 @@
       </tr>
       
         <tr>
-          <td>name</td><td>The name to say "Hello" to.</td><td>string</td><td>"World"</td>
+          <td>apikey</td><td>The Google Maps API key</td><td>string</td><td>""</td>
         </tr>
       
         <tr>
-          <td>count</td><td>The number of times the button has been clicked.</td><td>number</td><td>0</td>
+          <td>options</td><td>The Google map options</td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>polygonData</td><td>The polygons to draw
+Each polygon has a key, path and options</td><td>PolygonData | undefined</td><td>undefined</td>
         </tr>
       
     </table>
@@ -58,30 +63,31 @@
       </tr>
       
         <tr>
-          <td>name</td><td>name</td><td>The name to say "Hello" to.</td><td>string</td><td>"World"</td>
+          <td>styles</td><td>undefined</td><td>undefined</td><td>CSSResult</td><td>"css`\r\n    :host {\r\n      display: block;\r\n      border: solid 1px gray;\r\n      padding: 16px;\r\n      max-width: 800px;\r\n    }\r\n\r\n    #mapid {\r\n      height: 400px;\r\n    }\r\n  `"</td>
         </tr>
       
         <tr>
-          <td>count</td><td>count</td><td>The number of times the button has been clicked.</td><td>number</td><td>0</td>
+          <td>apikey</td><td>apikey</td><td>The Google Maps API key</td><td>string</td><td>""</td>
+        </tr>
+      
+        <tr>
+          <td>options</td><td>options</td><td>The Google map options</td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>polygonData</td><td>polygonData</td><td>The polygons to draw
+Each polygon has a key, path and options</td><td>PolygonData | undefined</td><td>undefined</td>
+        </tr>
+      
+        <tr>
+          <td>polygonsOnMap</td><td>undefined</td><td>The polygons that have been drawn on the map so that these can be modified.</td><td>PolygonsOnMap</td><td>{}</td>
         </tr>
       
     </table>
     
         
             
-        
-    <h3>Slots</h3>
-    <table>
-      <tr>
-        <th>Name</th><th>Description</th>
-      </tr>
-      
-        <tr>
-          <td></td><td>This element has a slot</td>
-        </tr>
-      
-    </table>
-    
+          
         
     <h3>CSS Shadow Parts</h3>
     <table>

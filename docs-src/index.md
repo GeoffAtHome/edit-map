@@ -5,7 +5,7 @@ title: <edit-map> ⌲ Home
 
 # &lt;edit-map>
 
-`<edit-map>` is an awesome element. It's a great introduction to building web components with LitElement, with nice documentation site as well.
+`<edit-map>` is an element that uses the Google Maps API. You need an API key to use this element.
 
 ## As easy as HTML
 
@@ -21,7 +21,8 @@ title: <edit-map> ⌲ Home
   </div>
   <div>
 
-<edit-map></edit-map>
+<edit-map apikey = 'AIzaSyAgV7gRtp8kIpEb17-ukuHMw7lte494nw8' options= '{ "center": { "lat": 51.50053, "lng": -3.24153 },"zoom": 18 }'>
+</edit-map>
 
   </div>
 </section>
@@ -40,7 +41,8 @@ title: <edit-map> ⌲ Home
   </div>
   <div>
 
-<edit-map name="HTML"></edit-map>
+<edit-map apikey = 'AIzaSyAgV7gRtp8kIpEb17-ukuHMw7lte494nw8' options= '{ "center": { "lat": 51.50053, "lng": -3.24153 },"zoom": 19 }'>
+</edit-map>
 
   </div>
 </section>
@@ -67,7 +69,8 @@ render(html`
   <div>
 
 <h2>This is a &lt;edit-map&gt;</h2>
-<edit-map name="lit-html"></edit-map>
+<edit-map apikey = 'AIzaSyAgV7gRtp8kIpEb17-ukuHMw7lte494nw8' options= '{ "center": { "lat": 51.50053, "lng": -3.24153 },"zoom": 20 }'>
+</edit-map>
 
   </div>
 </section>

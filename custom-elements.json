@@ -3,42 +3,58 @@
   "tags": [
     {
       "name": "edit-map",
-      "path": "./src/edit-map.ts",
-      "description": "An example element.",
+      "path": "./src\\edit-map.ts",
+      "description": "Interface onto the Google Maps API",
       "attributes": [
         {
-          "name": "name",
-          "description": "The name to say \"Hello\" to.",
+          "name": "apikey",
+          "description": "The Google Maps API key",
           "type": "string",
-          "default": "\"World\""
+          "default": "\"\""
         },
         {
-          "name": "count",
-          "description": "The number of times the button has been clicked.",
-          "type": "number",
-          "default": "0"
+          "name": "options",
+          "description": "The Google map options",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "polygonData",
+          "description": "The polygons to draw\r\nEach polygon has a key, path and options",
+          "type": "PolygonData | undefined"
         }
       ],
       "properties": [
         {
-          "name": "name",
-          "attribute": "name",
-          "description": "The name to say \"Hello\" to.",
-          "type": "string",
-          "default": "\"World\""
+          "name": "styles",
+          "type": "CSSResult",
+          "default": "\"css`\\r\\n    :host {\\r\\n      display: block;\\r\\n      border: solid 1px gray;\\r\\n      padding: 16px;\\r\\n      max-width: 800px;\\r\\n    }\\r\\n\\r\\n    #mapid {\\r\\n      height: 400px;\\r\\n    }\\r\\n  `\""
         },
         {
-          "name": "count",
-          "attribute": "count",
-          "description": "The number of times the button has been clicked.",
-          "type": "number",
-          "default": "0"
-        }
-      ],
-      "slots": [
+          "name": "apikey",
+          "attribute": "apikey",
+          "description": "The Google Maps API key",
+          "type": "string",
+          "default": "\"\""
+        },
         {
-          "name": "",
-          "description": "This element has a slot"
+          "name": "options",
+          "attribute": "options",
+          "description": "The Google map options",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "polygonData",
+          "attribute": "polygonData",
+          "description": "The polygons to draw\r\nEach polygon has a key, path and options",
+          "type": "PolygonData | undefined"
+        },
+        {
+          "name": "polygonsOnMap",
+          "description": "The polygons that have been drawn on the map so that these can be modified.",
+          "type": "PolygonsOnMap",
+          "default": "{}"
         }
       ],
       "cssParts": [

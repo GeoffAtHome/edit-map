@@ -27,7 +27,7 @@
     <div id="main-wrapper">
       <main>
         <h1>&lt;edit-map&gt;</h1>
-<p><code>&lt;edit-map&gt;</code> is an awesome element. It's a great introduction to building web components with LitElement, with nice documentation site as well.</p>
+<p><code>&lt;edit-map&gt;</code> is an element that uses the Google Maps API. You need an API key to use this element.</p>
 <h2>As easy as HTML</h2>
 <section class="columns">
   <div>
@@ -35,17 +35,19 @@
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>edit-map</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>edit-map</span><span class="token punctuation">></span></span></code></pre>
   </div>
   <div>
-<p><edit-map></edit-map></p>
+<edit-map apikey = 'AIzaSyAgV7gRtp8kIpEb17-ukuHMw7lte494nw8' options= '{ "center": { "lat": 51.50053, "lng": -3.24153 },"zoom": 18 }'>
+</edit-map>
   </div>
 </section>
 <h2>Configure with attributes</h2>
 <section class="columns">
   <div>
 <p><code>&lt;edit-map&gt;</code> can be configured with attributed in plain HTML.</p>
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>edit-map</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>HTML<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>edit-map</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>edit-map</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>HTML<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>edit-map</span><span class="token punctuation">></span></span></code></pre>
   </div>
   <div>
-<p><edit-map name="HTML"></edit-map></p>
+<edit-map apikey = 'AIzaSyAgV7gRtp8kIpEb17-ukuHMw7lte494nw8' options= '{ "center": { "lat": 51.50053, "lng": -3.24153 },"zoom": 19 }'>
+</edit-map>
   </div>
 </section>
 <h2>Declarative rendering</h2>
@@ -56,7 +58,8 @@
   </div>
   <div>
 <h2>This is a &lt;edit-map&gt;</h2>
-<edit-map name="lit-html"></edit-map>
+<edit-map apikey = 'AIzaSyAgV7gRtp8kIpEb17-ukuHMw7lte494nw8' options= '{ "center": { "lat": 51.50053, "lng": -3.24153 },"zoom": 20 }'>
+</edit-map>
   </div>
 </section>
 
