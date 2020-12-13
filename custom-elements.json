@@ -20,7 +20,7 @@
         },
         {
           "name": "polygonData",
-          "description": "The polygons to draw\r\nEach polygon has a key, path and options",
+          "description": "The polygons to draw.\r\nEach polygon has a key, path and options",
           "type": "PolygonData | undefined"
         }
       ],
@@ -28,7 +28,7 @@
         {
           "name": "styles",
           "type": "CSSResult",
-          "default": "\"css`\\r\\n    :host {\\r\\n      display: block;\\r\\n      border: solid 1px gray;\\r\\n      padding: 16px;\\r\\n      max-width: 800px;\\r\\n    }\\r\\n\\r\\n    #mapid {\\r\\n      height: 400px;\\r\\n    }\\r\\n  `\""
+          "default": "\"css`\\r\\n    :host {\\r\\n      display: block;\\r\\n    }\\r\\n\\r\\n    #mapid {\\r\\n      height: 100%;\\r\\n    }\\r\\n  `\""
         },
         {
           "name": "apikey",
@@ -47,7 +47,7 @@
         {
           "name": "polygonData",
           "attribute": "polygonData",
-          "description": "The polygons to draw\r\nEach polygon has a key, path and options",
+          "description": "The polygons to draw.\r\nEach polygon has a key, path and options",
           "type": "PolygonData | undefined"
         },
         {
@@ -55,12 +55,6 @@
           "description": "The polygons that have been drawn on the map so that these can be modified.",
           "type": "PolygonsOnMap",
           "default": "{}"
-        }
-      ],
-      "cssParts": [
-        {
-          "name": "button",
-          "description": "The button"
         }
       ]
     }

@@ -20,21 +20,16 @@ let map: google.maps.Map;
 /**
  * Interface onto the Google Maps API
  *
- * @apikey - This element has a slot
- * @csspart button - The button
  */
 @customElement('edit-map')
 export class EditMap extends LitElement {
   static styles = css`
     :host {
       display: block;
-      border: solid 1px gray;
-      padding: 16px;
-      max-width: 800px;
     }
 
     #mapid {
-      height: 400px;
+      height: 100%;
     }
   `;
 
@@ -73,8 +68,7 @@ export class EditMap extends LitElement {
     load(this.apikey, this)
   }
 
-  initMap(e: Event): boolean {
-    console.log('Loaded:', e)
+  initMap(_e: Event): boolean {
     const mid = this.renderRoot.querySelector('#mapid')
     if (mid) {
       map = new google.maps.Map(

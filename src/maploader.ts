@@ -53,7 +53,6 @@ export default (() => {
             waitForMapsToLoaded(element)
         } else {
             waitForMapsToLoaded(element)
-            throw new Error('You already started the loading of google maps')
         }
     }
 })()
@@ -66,7 +65,6 @@ declare global {
 
 function mapApiIsLoaded() {
     googleMapsApiLoaded = true
-    console.log('Maps loaded')
 }
 
 function waitFor(conditionFunction: () => unknown) {
@@ -85,7 +83,6 @@ function isGoogleMapsApiLoaded(): boolean {
 
 async function waitForMapsToLoaded(element: Element) {
     await waitFor(isGoogleMapsApiLoaded);
-    console.log('the wait is over!');
     const event = new CustomEvent('MapsLoaded')
     if (element) {
         element.dispatchEvent(event)
