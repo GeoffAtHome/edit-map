@@ -14,7 +14,7 @@ description: A basic example
     padding: 8px;
   }
 </style>
-<edit-map apikey='AIzaSyAgV7gRtp8kIpEb17-ukuHMw7lte494nw8' options='{ "center": { "lat": 51.50053, "lng": -3.24153 },"zoom": 18 }'
+<edit-map options='{ "center": { "lat": 51.50053, "lng": -3.24153 },"zoom": 18 }'
     polygonData='{
         "CF5 2PR": {
           "paths": {
@@ -177,7 +177,7 @@ description: A basic example
 <h3>HTML</h3>
 
 ```html
-<edit-map apikey='AIzaSyAgV7gRtp8kIpEb17-ukuHMw7lte494nw8' options='{ "center": { "lat": 51.50053, "lng": -3.24153 },"zoom": 18 }'
+<edit-map options='{ "center": { "lat": 51.50053, "lng": -3.24153 },"zoom": 18 }'
     polygonData='{
         "CF5 2PR": {
           "paths": {

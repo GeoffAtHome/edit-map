@@ -12,3 +12,7 @@ maploader.d.ts
 maploader.js
 maploader.js.map
 docs/edit-map.bundled.js
+config.js
+config.d.ts.map
+config.js.map
+config.d.ts

@@ -7,12 +7,6 @@
       "description": "Interface onto the Google Maps API",
       "attributes": [
         {
-          "name": "apikey",
-          "description": "The Google Maps API key",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
           "name": "options",
           "description": "The Google map options",
           "type": "object",
@@ -29,13 +23,6 @@
           "name": "styles",
           "type": "CSSResult",
           "default": "\"css`\\r\\n    :host {\\r\\n      display: block;\\r\\n    }\\r\\n\\r\\n    #mapid {\\r\\n      height: 100%;\\r\\n    }\\r\\n  `\""
-        },
-        {
-          "name": "apikey",
-          "attribute": "apikey",
-          "description": "The Google Maps API key",
-          "type": "string",
-          "default": "\"\""
         },
         {
           "name": "options",

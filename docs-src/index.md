@@ -15,7 +15,7 @@ title: <edit-map> ⌲ Home
 `<edit-map>` is just an HTML element. You can it anywhere you can use HTML!
 
 ```html
-    <edit-map apikey='APIKEY' options='{ "center": { "lat": 51.50053, "lng": -3.24153 },"zoom": 18 }'
+    <edit-map options='{ "center": { "lat": 51.50053, "lng": -3.24153 },"zoom": 18 }'
     polygonData='{
         "CF5 2PR": {
           "paths": {
@@ -53,7 +53,7 @@ title: <edit-map> ⌲ Home
 
   </div>
   <div>
-    <edit-map apikey='AIzaSyAgV7gRtp8kIpEb17-ukuHMw7lte494nw8' options='{ "center": { "lat": 51.50053, "lng": -3.24153 },"zoom": 18 }'
+    <edit-map options='{ "center": { "lat": 51.50053, "lng": -3.24153 },"zoom": 18 }'
     polygonData='{
         "CF5 2PR": {
           "paths": {
@@ -214,7 +214,7 @@ title: <edit-map> ⌲ Home
 `<edit-map>` can be configured with attributed in plain HTML.
 
 ```html
-    <edit-map apikey='APIKEY' options='{ "center": { "lat": 51.50053, "lng": -3.24153 },"zoom": 18 }'
+    <edit-map options='{ "center": { "lat": 51.50053, "lng": -3.24153 },"zoom": 18 }'
     polygonData='{
         "CF5 2PR": {
           "paths": {
@@ -252,7 +252,7 @@ title: <edit-map> ⌲ Home
 
   </div>
   <div>
-    <edit-map apikey='AIzaSyAgV7gRtp8kIpEb17-ukuHMw7lte494nw8' options='{ "center": { "lat": 51.50053, "lng": -3.24153 },"zoom": 18 }'
+    <edit-map options='{ "center": { "lat": 51.50053, "lng": -3.24153 },"zoom": 18 }'
     polygonData='{
         "CF5 2PR": {
           "paths": {
@@ -419,7 +419,7 @@ const name="lit-html";
 
 render(html`
   <h2>This is a &lt;edit-map&gt;</h2>
-    <edit-map apikey='APIKEY' options=${options} polygonData=${polygonData}></edit-map>
+    options=${options} polygonData=${polygonData}></edit-map>
 `, document.body);
 ```
 
@@ -427,7 +427,7 @@ render(html`
   <div>
 
 <h2>This is a &lt;edit-map&gt;</h2>
-    <edit-map apikey='AIzaSyAgV7gRtp8kIpEb17-ukuHMw7lte494nw8' options='{ "center": { "lat": 51.50053, "lng": -3.24153 },"zoom": 18 }'
+    <edit-map options='{ "center": { "lat": 51.50053, "lng": -3.24153 },"zoom": 18 }'
     polygonData='{
         "CF5 2PR": {
           "paths": {

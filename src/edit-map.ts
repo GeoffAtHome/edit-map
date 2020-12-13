@@ -34,14 +34,8 @@ export class EditMap extends LitElement {
   `;
 
   /**
-   * The Google Maps API key
-   */
-  @property({ type: String })
-  apikey = '';
-
-  /**
-   * The Google map options
-   */
+ * The Google map options
+ */
   @property({ type: Object })
   options = {};
 
@@ -65,7 +59,7 @@ export class EditMap extends LitElement {
 
   protected firstUpdated() {
     this.addEventListener('MapsLoaded', e => this.initMap(e))
-    load(this.apikey, this)
+    load(this)
   }
 
   initMap(_e: Event): boolean {

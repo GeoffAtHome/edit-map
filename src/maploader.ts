@@ -28,12 +28,14 @@
  */
 
 
+import { apiKey } from './config'
 let googleMapsApiLoaded = false
+
 
 export default (() => {
     let isApiSetUp = false
 
-    return (apikey: string, element: Element) => {
+    return (element: Element) => {
         if (typeof document === 'undefined') {
             // Do nothing if run from server-side
             return
@@ -45,7 +47,7 @@ export default (() => {
             window.mapApiIsLoaded = mapApiIsLoaded
 
             const googleMapScript = document.createElement('SCRIPT')
-            const url = `https://maps.googleapis.com/maps/api/js?key=${apikey}&callback=mapApiIsLoaded&libraries=drawing&v=weekly`
+            const url = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=mapApiIsLoaded&libraries=drawing&v=weekly`
             googleMapScript.setAttribute('src', url)
             googleMapScript.setAttribute('async', '')
             googleMapScript.setAttribute('defer', '')
