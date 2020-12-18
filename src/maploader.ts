@@ -65,18 +65,18 @@ declare global {
     }
 }
 
-function mapApiIsLoaded() {
+function mapApiIsLoaded(): void {
     googleMapsApiLoaded = true
 }
 
-function waitFor(conditionFunction: () => unknown) {
+function waitFor(conditionFunction: () => boolean) {
 
     const poll = (resolve: () => void) => {
         if (conditionFunction()) resolve();
         else setTimeout((_: unknown) => poll(resolve), 400);
     }
 
-    return new Promise(poll);
+    return new Promise<void>(poll);
 }
 
 function isGoogleMapsApiLoaded(): boolean {

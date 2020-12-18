@@ -16,6 +16,12 @@
           "name": "polygonData",
           "description": "The polygons to draw.\r\nEach polygon has a key, path and options",
           "type": "PolygonData | undefined"
+        },
+        {
+          "name": "editPolygon",
+          "description": "Polygon to edit\r\npc: string - index to polygon\r\nstate: boolean \r\n- true to edit\r\n- false stop editing and fire modified polygon",
+          "type": "{ pc: string; state: boolean; }",
+          "default": "{\"pc\":\"\",\"state\":false}"
         }
       ],
       "properties": [
@@ -38,10 +44,19 @@
           "type": "PolygonData | undefined"
         },
         {
-          "name": "polygonsOnMap",
-          "description": "The polygons that have been drawn on the map so that these can be modified.",
-          "type": "PolygonsOnMap",
-          "default": "{}"
+          "name": "editPolygon",
+          "attribute": "editPolygon",
+          "description": "Polygon to edit\r\npc: string - index to polygon\r\nstate: boolean \r\n- true to edit\r\n- false stop editing and fire modified polygon",
+          "type": "{ pc: string; state: boolean; }",
+          "default": "{\"pc\":\"\",\"state\":false}"
+        }
+      ],
+      "events": [
+        {
+          "name": "modifiedPolygon"
+        },
+        {
+          "name": "clickedPolygon"
         }
       ]
     }

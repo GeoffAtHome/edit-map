@@ -16,3 +16,4 @@ config.js
 config.d.ts.map
 config.js.map
 config.d.ts
+src/config.ts

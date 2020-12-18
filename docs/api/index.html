@@ -49,6 +49,14 @@
 Each polygon has a key, path and options</td><td>PolygonData | undefined</td><td>undefined</td>
         </tr>
       
+        <tr>
+          <td>editPolygon</td><td>Polygon to edit
+pc: string - index to polygon
+state: boolean 
+- true to edit
+- false stop editing and fire modified polygon</td><td>{ pc: string; state: boolean; }</td><td>{"pc":"","state":false}</td>
+        </tr>
+      
     </table>
   
         
@@ -72,13 +80,33 @@ Each polygon has a key, path and options</td><td>PolygonData | undefined</td><td
         </tr>
       
         <tr>
-          <td>polygonsOnMap</td><td>undefined</td><td>The polygons that have been drawn on the map so that these can be modified.</td><td>PolygonsOnMap</td><td>{}</td>
+          <td>editPolygon</td><td>editPolygon</td><td>Polygon to edit
+pc: string - index to polygon
+state: boolean 
+- true to edit
+- false stop editing and fire modified polygon</td><td>{ pc: string; state: boolean; }</td><td>{"pc":"","state":false}</td>
         </tr>
       
     </table>
     
         
-            
+        
+    <h3>Events</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th>
+      </tr>
+      
+        <tr>
+          <td>modifiedPolygon</td><td>undefined</td>
+        </tr>
+      
+        <tr>
+          <td>clickedPolygon</td><td>undefined</td>
+        </tr>
+      
+    </table>
+      
           
         
         

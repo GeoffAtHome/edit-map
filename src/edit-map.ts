@@ -12,7 +12,7 @@
  * http://polymer.github.io/PATENTS.txt
  */
 
-import { LitElement, html, customElement, property, css } from 'lit-element';
+import { LitElement, html, customElement, property, css, PropertyValues, internalProperty } from 'lit-element';
 import load from './maploader'
 
 
@@ -47,9 +47,20 @@ export class EditMap extends LitElement {
   polygonData: PolygonData | undefined
 
   /**
+   * Polygon to edit
+   * pc: string - index to polygon
+   * state: boolean 
+   * - true to edit
+   * - false stop editing and fire modified polygon
+   */
+  @property({ type: Object })
+  editPolygon: { pc: string; state: boolean } = { pc: '', state: false }
+
+  /**
    * The polygons that have been drawn on the map so that these can be modified.
    */
-  polygonsOnMap: PolygonsOnMap = {}
+  @internalProperty()
+  private polygonsOnMap: PolygonsOnMap = {}
 
   render() {
     return html`
@@ -62,6 +73,49 @@ export class EditMap extends LitElement {
     load(this)
   }
 
+  updated(changedProperties: PropertyValues) {
+    changedProperties.forEach((oldValue, propName) => {
+      console.log(`${String(propName)} changed. oldValue: ${oldValue}`);
+    });
+    this.shadowRoot!.getElementById('b')?.focus();
+    if (changedProperties.has('editPolygon')) {
+      this.setPolygonEditMode(this.editPolygon)
+    }
+
+  }
+
+  setPolygonEditMode(editPolygon: { pc: string; state: boolean }) {
+    const polygon = this.polygonsOnMap[editPolygon.pc]
+    if (polygon !== undefined) {
+      polygon.setEditable(editPolygon.state)
+      if (!editPolygon.state) {
+        this.fireModifiedPolygon(editPolygon.pc)
+      }
+    }
+  }
+
+  /**
+   * modified polygon event.
+   *
+   * @event edit-map#modifiedPolygon
+   * @type {object}
+   * @property {string} pc - id of polygon
+   * @property {Polygon} path - polygon path
+   */
+  fireModifiedPolygon(pc: string) {
+    const polygon = this.polygonsOnMap[pc]
+
+    if (polygon !== undefined) {
+      const event = new CustomEvent<{ pc: string; path: Polygon }>('modifiedPolygon', {
+        detail: {
+          pc: pc,
+          path: getPathGooglePolygon(polygon)
+        }
+      })
+      this.dispatchEvent(event)
+    }
+  }
+
   initMap(_e: Event): boolean {
     const mid = this.renderRoot.querySelector('#mapid')
     if (mid) {
@@ -70,26 +124,39 @@ export class EditMap extends LitElement {
       );
     }
     if (this.polygonData) {
-      for (const [postcode, item] of Object.entries(this.polygonData)) {
+      for (const [pc, item] of Object.entries(this.polygonData)) {
         const options = item.options
         options.paths = getPath(item.paths)
         const newPolygon = new google.maps.Polygon(options)
-        this.polygonsOnMap[postcode] = newPolygon
+        this.polygonsOnMap[pc] = newPolygon
 
-        google.maps.event.addListener(newPolygon, "dblclick", function (event) {
-          if (event.vertex !== undefined) {
-            const path = newPolygon.getPath();
-            path.removeAt(event.vertex);
-          }
-        });
+        google.maps.event.addListener(newPolygon, "dblclick", (event) => { this.removeVertex(event, newPolygon) })
+        google.maps.event.addListener(newPolygon, "click", (_event) => { this.clickedPolygon(pc, newPolygon) })
         newPolygon.setMap(map);
+        this.setPolygonEditMode({ pc: pc, state: false })
+
       }
     }
-
-
     return true
   }
+
+  removeVertex(event: { vertex: number | undefined }, polygon: google.maps.Polygon) {
+    if (event.vertex !== undefined) {
+      const path = polygon.getPath();
+      path.removeAt(event.vertex);
+    }
+  }
+
+  clickedPolygon(pc: string, polygon: google.maps.Polygon) {
+    if (!polygon.getEditable()) {
+      const event = new CustomEvent('clickedPolygon', {
+        detail: pc
+      })
+      this.dispatchEvent(event)
+    }
+  }
 }
+
 declare global {
   interface HTMLElementTagNameMap {
     'edit-map': EditMap;
@@ -100,7 +167,6 @@ interface Polygon {
   coordinates: Array<Array<[number, number]>>;
   type: string;
 }
-
 export interface PolygonDataItem {
   paths: Polygon;
   options: google.maps.PolygonOptions;
@@ -119,3 +185,22 @@ function getPath(polygon: Polygon) {
   return polygon.coordinates[0].map(pair => { return { lat: pair[1], lng: pair[0] } })
 }
 
+
+function getPathGooglePolygon(polygon: google.maps.Polygon): Polygon {
+  const paths = polygon.getPaths().getArray()
+  if (paths.length === 1) {
+    const path = paths[0].getArray()
+    return {
+      type: 'Polygon',
+      coordinates: [path.map((p) => [p.lng(), p.lat()])]
+    }
+  } else {
+    console.log('Path has more than one polygon')
+  }
+
+  const p: Polygon = {
+    type: 'Polygon',
+    coordinates: []
+  }
+  return p
+}

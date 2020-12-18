@@ -1,22 +1,4 @@
-<!doctype html>
-
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>&lt;edit-map> Demo</title>
-    <script type="module" src="../edit-map.js"></script>
-    <style>
-      edit-map {
-        width: 800px;
-        height: 400px;
-        padding: 0px;
-        margin: 0px;
-      }
-    </style>
-  </head>
-  <body>
-    <edit-map id='map' options='{ "center": { "lat": 51.50053, "lng": -3.24153 },"zoom": 18 }'
-    polygonData='{
+export const polygonData={
     "CF5 2PR": {
       "paths": {
         "coordinates": [
@@ -187,36 +169,12 @@
             "type": "Polygon"
         },
         "options": {
-          "strokeColor": "#00FF00",
-          "fillColor": "#00FF00"
+          "strokeColor": "#FF0000",
+          "strokeOpacity": 0.8,
+          "strokeWeight": 2,
+          "fillColor": "#FF0000",
+          "fillOpacity": 0.35,
+          "editable": false
         }
       }
   }
-'
-    >
-    </edit-map>
-    <button type='button' id='editPolygon' onclick='editPolygon()'>Edit polygon</button>
-  </body>
-  <script>
-    function editPolygon() {
-    const x = document.getElementById("map");
-    x.addEventListener('modifiedPolygon', modifiedPolygon)
-    x.addEventListener('clickedPolygon', clickedPolygon)
-    let value = JSON.parse(x.getAttribute('editPolygon'))
-    if(value) {
-      value.state = !value.state
-    } else {
-      value = {}
-      value.pc = 'CF5 2PQ'
-      value.state = true
-    }
-    x.setAttribute('editpolygon',JSON.stringify(value))
-  }
-    function modifiedPolygon(e) {
-      console.log(JSON.stringify(e.detail))
-    }
-    function clickedPolygon(e) {
-      console.log(e.detail)
-    }
-</script>
-</html>
