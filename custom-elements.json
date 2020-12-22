@@ -9,7 +9,7 @@
         {
           "name": "options",
           "description": "The Google map options",
-          "type": "object",
+          "type": " google.maps.MapOptions ",
           "default": "{}"
         },
         {
@@ -19,7 +19,7 @@
         },
         {
           "name": "editPolygon",
-          "description": "Polygon to edit\r\npc: string - index to polygon\r\nstate: boolean \r\n- true to edit\r\n- false stop editing and fire modified polygon",
+          "description": "Polygon to edit",
           "type": "{ pc: string; state: boolean; }",
           "default": "{\"pc\":\"\",\"state\":false}"
         }
@@ -28,13 +28,13 @@
         {
           "name": "styles",
           "type": "CSSResult",
-          "default": "\"css`\\r\\n    :host {\\r\\n      display: block;\\r\\n    }\\r\\n\\r\\n    #mapid {\\r\\n      height: 100%;\\r\\n    }\\r\\n  `\""
+          "default": "\"css`\\r\\n    :host {\\r\\n      display: block;\\r\\n    }\\r\\n\\r\\n    #mapid {\\r\\n      height: 100%;\\r\\n    }\\r\\n\\r\\n    #popup {\\r\\n      display: none;\\r\\n      position:absolute;\\r\\n      background-color: blue;\\r\\n      border-radius: 5px;\\r\\n      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);\\r\\n      padding: 10px;\\r\\n    }\\r\\n\\r\\n        #popup[active] {\\r\\n      display: block;\\r\\n      background-color: pink;\\r\\n    }\\r\\n  `\""
         },
         {
           "name": "options",
           "attribute": "options",
           "description": "The Google map options",
-          "type": "object",
+          "type": " google.maps.MapOptions ",
           "default": "{}"
         },
         {
@@ -46,17 +46,19 @@
         {
           "name": "editPolygon",
           "attribute": "editPolygon",
-          "description": "Polygon to edit\r\npc: string - index to polygon\r\nstate: boolean \r\n- true to edit\r\n- false stop editing and fire modified polygon",
+          "description": "Polygon to edit",
           "type": "{ pc: string; state: boolean; }",
           "default": "{\"pc\":\"\",\"state\":false}"
         }
       ],
       "events": [
         {
-          "name": "modifiedPolygon"
+          "name": "modifiedPolygon",
+          "description": "Dispatched when editing selected polygon has finished."
         },
         {
-          "name": "clickedPolygon"
+          "name": "clickedPolygon",
+          "description": "Dispatched when a polygon has been 'clicked'"
         }
       ]
     }

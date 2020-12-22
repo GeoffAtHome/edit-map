@@ -41,7 +41,7 @@
       </tr>
       
         <tr>
-          <td>options</td><td>The Google map options</td><td>object</td><td>{}</td>
+          <td>options</td><td>The Google map options</td><td> google.maps.MapOptions </td><td>{}</td>
         </tr>
       
         <tr>
@@ -50,11 +50,7 @@ Each polygon has a key, path and options</td><td>PolygonData | undefined</td><td
         </tr>
       
         <tr>
-          <td>editPolygon</td><td>Polygon to edit
-pc: string - index to polygon
-state: boolean 
-- true to edit
-- false stop editing and fire modified polygon</td><td>{ pc: string; state: boolean; }</td><td>{"pc":"","state":false}</td>
+          <td>editPolygon</td><td>Polygon to edit</td><td>{ pc: string; state: boolean; }</td><td>{"pc":"","state":false}</td>
         </tr>
       
     </table>
@@ -67,11 +63,11 @@ state: boolean
       </tr>
       
         <tr>
-          <td>styles</td><td>undefined</td><td>undefined</td><td>CSSResult</td><td>"css`\r\n    :host {\r\n      display: block;\r\n    }\r\n\r\n    #mapid {\r\n      height: 100%;\r\n    }\r\n  `"</td>
+          <td>styles</td><td>undefined</td><td>undefined</td><td>CSSResult</td><td>"css`\r\n    :host {\r\n      display: block;\r\n    }\r\n\r\n    #mapid {\r\n      height: 100%;\r\n    }\r\n\r\n    #popup {\r\n      display: none;\r\n      position:absolute;\r\n      background-color: blue;\r\n      border-radius: 5px;\r\n      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);\r\n      padding: 10px;\r\n    }\r\n\r\n        #popup[active] {\r\n      display: block;\r\n      background-color: pink;\r\n    }\r\n  `"</td>
         </tr>
       
         <tr>
-          <td>options</td><td>options</td><td>The Google map options</td><td>object</td><td>{}</td>
+          <td>options</td><td>options</td><td>The Google map options</td><td> google.maps.MapOptions </td><td>{}</td>
         </tr>
       
         <tr>
@@ -80,11 +76,7 @@ Each polygon has a key, path and options</td><td>PolygonData | undefined</td><td
         </tr>
       
         <tr>
-          <td>editPolygon</td><td>editPolygon</td><td>Polygon to edit
-pc: string - index to polygon
-state: boolean 
-- true to edit
-- false stop editing and fire modified polygon</td><td>{ pc: string; state: boolean; }</td><td>{"pc":"","state":false}</td>
+          <td>editPolygon</td><td>editPolygon</td><td>Polygon to edit</td><td>{ pc: string; state: boolean; }</td><td>{"pc":"","state":false}</td>
         </tr>
       
     </table>
@@ -98,11 +90,11 @@ state: boolean
       </tr>
       
         <tr>
-          <td>modifiedPolygon</td><td>undefined</td>
+          <td>modifiedPolygon</td><td>Dispatched when editing selected polygon has finished.</td>
         </tr>
       
         <tr>
-          <td>clickedPolygon</td><td>undefined</td>
+          <td>clickedPolygon</td><td>Dispatched when a polygon has been 'clicked'</td>
         </tr>
       
     </table>
