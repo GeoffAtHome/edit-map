@@ -50,6 +50,7 @@
     "@rollup/plugin-replace": "^2.3.4",
     "@types/chai": "^4.2.14",
     "@types/googlemaps": "^3.40.5",
+    "@types/karma-snapshot": "^0.6.0",
     "@types/mocha": "^7.0.2",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",

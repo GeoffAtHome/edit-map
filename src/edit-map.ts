@@ -96,7 +96,7 @@ export class EditMap extends LitElement {
   render() {
     return html`
       <div id="mapid"></div>
-      <span id="popup" data-active="${this.showPopup === 'show'}">${this.popupText}</span>
+      <span id="popup" ?data-active="${this.showPopup === 'show'}">${this.popupText}</span>
     `;
   }
 
