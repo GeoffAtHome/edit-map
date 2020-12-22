@@ -44,7 +44,7 @@ export class EditMap extends LitElement {
       padding: 10px;
     }
 
-        #popup[active] {
+        #popup[data-active] {
       display: block;
       background-color: pink;
     }
@@ -64,7 +64,7 @@ export class EditMap extends LitElement {
    * The polygons to draw.
    * Each polygon has a key, path and options
    */
-  @property({ attribute: 'polygonData', type: Object })
+  @property({ type: Object })
   public polygonData: PolygonData | undefined
 
   /**
@@ -72,7 +72,7 @@ export class EditMap extends LitElement {
    * 
    * @type: {pc: string; state: boolean }
    */
-  @property({ attribute: 'editPolygon', type: Object })
+  @property({ type: Object })
   public editPolygon: { pc: string; state: boolean } = { pc: '', state: false }
 
   /**
@@ -96,7 +96,7 @@ export class EditMap extends LitElement {
   render() {
     return html`
       <div id="mapid"></div>
-      <span id="popup" ?active="${this.showPopup === 'show'}">${this.popupText}</span>
+      <span id="popup" data-active="${this.showPopup === 'show'}">${this.popupText}</span>
     `;
   }
 
@@ -106,9 +106,6 @@ export class EditMap extends LitElement {
   }
 
   updated(changedProperties: PropertyValues) {
-    changedProperties.forEach((oldValue, propName) => {
-      console.log(`${String(propName)} changed. oldValue: ${oldValue}`);
-    });
     this.shadowRoot!.getElementById('b')?.focus();
     if (changedProperties.has('editPolygon')) {
       this.setPolygonEditMode(this.editPolygon)
