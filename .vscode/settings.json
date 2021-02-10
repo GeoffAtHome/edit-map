@@ -1,5 +1,15 @@
 {
     "files.associations": {
         "*.yaml": "home-assistant"
-    }
+    },
+    "cSpell.words": [
+        "checksize",
+        "deepmerge",
+        "eleventy",
+        "filesize",
+        "googlemaps",
+        "okaidia",
+        "prismjs",
+        "syntaxhighlight"
+    ]
 }
